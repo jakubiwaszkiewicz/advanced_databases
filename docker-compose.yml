@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: mysql+aiomysql://user:password@mysql:3306/db
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:

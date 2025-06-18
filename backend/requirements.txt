@@ -1,0 +1,7 @@
+databases
+sqlalchemy
+aiomysql
+fastapi
+uvicorn
+cryptography
+locust

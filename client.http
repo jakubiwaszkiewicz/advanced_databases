@@ -1,0 +1,13 @@
+POST http://localhost:8000/api/rent-car
+Content-Type: application/json
+
+{
+    "customer_id": 2,
+    "car_id": 1,
+    "start_date": "2025-05-01",
+    "end_date": "2025-05-05"
+}
+
+###
+
+GET http://localhost:8000/api/available-cars?location_id=2&start_date=2025-03-01&end_date=2025-03-10

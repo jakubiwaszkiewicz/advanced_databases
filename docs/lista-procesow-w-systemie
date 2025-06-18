@@ -1,0 +1,29 @@
+## Lista processów w systemie:
+
+Proces wynajmu samochodu:
+  - Tworzenie rezerwacji
+    - Dodanie do tabeli RENTAL, przypisanie auta do klienta na konkretny przedział czasowy.
+  - Potwierdzenie e-mailowe rezerwacji
+    - Aktualizacja pola is_email_confirmed.
+  - Zarządzanie terminami wynajmu
+    - (start_date, end_date, returned_date).
+  - Ustalanie ceny wynajmu
+    - Na podstawie poziomu luksusu pojazdu w momencie wynajmu (price_per_day_at_time_of_rental).
+
+Proces płatności:
+  - Rejestracja próby płatności za wynajem
+    - Tworzenie rekordu w PAYMENT, powiązanego z wynajmem.
+  - Obsługa metod płatności
+    - Dodawanie/edycja metod z określoną prowizją.
+  - Obsługa statusów płatności
+    - Zmiana statusu (np. z pending na paid).
+  - Obliczanie prowizji od metody płatności
+    - Na podstawie metody płatności w momencie płacenia (commission_at_time_of_payment).
+
+Proces zarządzania pojazdami:
+  - Dodawanie nowego samochodu
+    - Rejestracja auta w bazie z przypisaniem do modelu, lokalizacji i numeru rejestracyjnego.
+  - Zarządzanie dostępnością samochodów
+    - Oznaczanie pojazdu jako dostępny/niedostępny.
+  - Przeniesienie samochodu do innej lokalizacji
+    - Zmiana przypisanego location_id.
